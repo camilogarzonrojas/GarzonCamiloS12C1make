@@ -1,0 +1,17 @@
+#MakeFiles
+
+resultados(1).pdf: resultados(1).tex plot(1).pdf plot1(1).pdf
+	pdflatex resultados(1).tex
+
+plot1(1).pdf: datos1(1).dat plotdatos(1).py
+	python plotdatos(1).py
+
+plot(1).pdf: datos(1).dat plotdatos(1).py
+	python plotdatos(1).py
+
+datos(1).dat: makedatos(1).py
+	python makedatos(1).py >> datos(1).dat
+
+datos1(1).dat: makedatos1(1).cpp
+	g++ makedatos1(1).cpp
+	./a.out >> datos1(1).dat
